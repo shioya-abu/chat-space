@@ -2,9 +2,9 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|email|string|null: false|
-|password|string|null: false|
-|username|string|null: false|
+|email|string|null: false, unique: true|
+|password|string|null: false, unique: true|
+|username|string|null: false, unique: true, index: true|
 ### Association
 - has_many :groups_users
 - has_many :groups, through: :groups_users
