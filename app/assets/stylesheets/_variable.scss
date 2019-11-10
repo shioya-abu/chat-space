@@ -1,2 +1,16 @@
 $btnColor: #38aef0;
 $chatColor: #434a54;
+
+.flash {
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: lighter;
+  width: 100vw;
+  &__alert {
+    background-color: #f35500;
+  }
+  &__notice {
+    background-color: $btnColor;
+  }
+}
