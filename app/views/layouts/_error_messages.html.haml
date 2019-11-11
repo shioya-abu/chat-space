@@ -1,0 +1,7 @@
+- if model.errors.any?
+  #error_explanation
+    %h2= "#{model.errors.full_messages.count}件のエラーがあります。"
+    %ul
+      - model.errors.full_messages.each do |msg|
+        %li
+        = msg
