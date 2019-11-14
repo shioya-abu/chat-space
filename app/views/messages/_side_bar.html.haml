@@ -16,4 +16,5 @@
         =link_to group_messages_path(group) do
           %p.group__group-name
             = group.name
-          %p.group__latest-message message
+          %p.group__latest-message
+            = group.show_the_latest_message
