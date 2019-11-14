@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
       flash[:notice] = "新規グループ作成成功！"
       redirect_to "/"
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -24,7 +24,7 @@ class GroupsController < ApplicationController
       flash[:notice] = "グループの編集に成功しました！"
       redirect_to group_messages_path(@group)
     else
-      render 'edit'
+      render :edit
     end
   end
 
