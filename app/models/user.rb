@@ -12,4 +12,8 @@ class User < ApplicationRecord
   validates :email, format: { with: /\A[a-zA-Z0-9_#!$%&`'*+-{|}~^\/=?.]+@[a-zA-Z0-9][a-zA-Z0-9.-]+\z/ }
   validates :name, presence: true, uniqueness: true
 
+  def self.search(input, id)
+    return nil if input == ""
+    User.where(['name LIKE ?', "%#{input}%"]).where.not(id: id).limit(10)
+  end
 end
