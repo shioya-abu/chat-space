@@ -5,4 +5,5 @@
     %div.flash-box
     %div.wrapper
       = render 'messages/side_bar'
+    - if @group.present?
       = render 'messages/main_chat'

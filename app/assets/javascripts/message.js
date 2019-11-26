@@ -1,7 +1,32 @@
 $(function(){
+
+  var reloadMessages = function(){
+    if(window.location.href.match(/\/groups\/\d+\/messages/)){
+      var href = 'api/messages#index {:format=>"json"}'
+      last_message_id = $(".message").last().data('message-id')
+      $.ajax({
+        url: href,
+        type: 'GET',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+      .done(function(messages){
+        var insertHTML = '';
+        messages.forEach(function(message){
+          insertHTML = buildHTML(message);
+          $('.messages').append(insertHTML);
+          $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+        });
+      })
+      .fail(function(){
+        console.log('error');
+      });
+    };
+  };
+
   function buildHTML(message){
       var addImage = message.image ? message.image : "";
-      var html = `<div class="message">
+      var html = `<div class="message" data-message-id="${message.id}">
                     <div class="message__upper-info">
                       <p class="message__upper-info__talker">
                       ${message.user_name}
@@ -43,4 +68,5 @@ $(function(){
       $(".submit-btn").prop('disabled', false);
     })
   })
+  setInterval(reloadMessages, 7000);
 });
