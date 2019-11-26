@@ -19,7 +19,7 @@ $(function(){
         });
       })
       .fail(function(){
-        console.log('error');
+        alert('メッセージ更新失敗!');
       });
     };
   };
